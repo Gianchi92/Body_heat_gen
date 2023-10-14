@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1697225872 source:g:\my drive\labning\doctorado\programacion_c\body_heat_plot\plot_file.c
+	<stdio.h>
+	<stdlib.h>
+
