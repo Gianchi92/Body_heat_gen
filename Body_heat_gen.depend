@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1697225135 source:g:\my drive\labning\doctorado\programacion_c\body_heat_gen\temp_file_gen.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+
