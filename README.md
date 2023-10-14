@@ -1,4 +1,4 @@
-# Body_heat_gen
+# CData
 
 Proyecto para Programacion C UNSAM 2C2023
 Se pide generar una prueba de concepto de una base de datos para agrupar datos personales y clínicos usando estructuras de C.
