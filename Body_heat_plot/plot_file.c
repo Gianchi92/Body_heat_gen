@@ -1,27 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-/*
-void plotScatter(int heights,int scale) {
-    int maxScale = 38 * scale - 36 * scale; // Assuming 38.0 as max temperature and 36.0 as min
 
-    for (int y = maxScale; y >= 0; y--) {
-        for (int x = 0; x < 100; x++) {
-            if (heights[x] > y) {
-                printf("*");
-            } else {
-                printf(" ");
-            }
-        }
-        printf("\n");
-    }
-}
-*/
 int main() {
 
     // Get the subject name from the user
     printf("Enter the subject name: ");
     //scanf("%s", subject);
-    printf("Gianni\n");char subject[100] = "Gianni"; //harcodeado
+    printf("Gianni\n");char subject[100] = "Gianni"; //Hardcoded !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
     // Generate the filename
