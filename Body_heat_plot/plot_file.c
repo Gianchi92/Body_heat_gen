@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 int main() {
-    int N=80;
-    float temp_min=35.8;
-    float temp_max=38.0;
+    int N_max=100;
+    float temp_min=35.9;
+    float temp_max=38.2;
 
     printf("Nombre del sujeto: ");
     char subject[100];scanf("%s", subject);
@@ -20,23 +20,22 @@ int main() {
         return 1;
     }
 
-    // Skip header line
     char buffer[100];
-    fgets(buffer, sizeof(buffer), file);
     int index;
     float temp;
-    int scale = 20;  // Factor de escala
-    int maxScale = 38 * scale - 36 * scale; // Asumo rango 38-36
+    float scale = 20;  // Factor de escala
+    int maxScale = (float)((temp_max-temp_min) * scale );
     int heights[100] = {0};
 
+    fgets(buffer, sizeof(buffer), file);    // Skippeo header
     while (fscanf(file, "%d,%f\n", &index, &temp) != EOF) {
-        heights[index - 1] = (int)((temp - 36.0) * scale);
+        heights[index - 1] = (int)((temp - temp_min) * scale);
     }
 
     for (int y = maxScale; y >= 0; y--) {
-        // Cada 5
+        // Cada 5 ploteo escala
         if (y % 5 == 0) {
-            printf("%.1f | ", 36.0 + (float)y / scale);
+            printf("%.1f | ", temp_min + (float)y / scale);
         } else {
             printf("     | ");
         }
