@@ -2,16 +2,16 @@
 #include <stdlib.h>
 
 int main() {
+    int N=80;
+    float temp_min=35.8;
+    float temp_max=38.0;
 
-    // Get the subject name from the user
-    printf("Enter the subject name: ");
-    //scanf("%s", subject);
-    printf("Gianni\n");char subject[100] = "Gianni"; //Hardcoded !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    printf("Nombre del sujeto: ");
+    char subject[100];scanf("%s", subject);
+    //printf("Gianni\n");char subject[100] = "Gianni"; //Hardcoded !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-    // Generate the filename
     char filename[150];
-    //snprintf(filename, sizeof(filename), "%s_%s.csv", subject, timestamp);
     snprintf(filename, sizeof(filename), "%s.csv", subject);
     FILE *file = fopen(filename, "r");
 
@@ -23,21 +23,18 @@ int main() {
     // Skip header line
     char buffer[100];
     fgets(buffer, sizeof(buffer), file);
-
-     // Read the data
     int index;
     float temp;
-    int scale = 20;  // Vertical scale factor for better visualization
-    int maxScale = 38 * scale - 36 * scale; // Assuming 38.0 as max temperature and 36.0 as min
+    int scale = 20;  // Factor de escala
+    int maxScale = 38 * scale - 36 * scale; // Asumo rango 38-36
     int heights[100] = {0};
 
     while (fscanf(file, "%d,%f\n", &index, &temp) != EOF) {
         heights[index - 1] = (int)((temp - 36.0) * scale);
     }
 
-    // Plot the data
     for (int y = maxScale; y >= 0; y--) {
-        // Add vertical axis label every 500 units
+        // Cada 5
         if (y % 5 == 0) {
             printf("%.1f | ", 36.0 + (float)y / scale);
         } else {
@@ -63,20 +60,7 @@ int main() {
 
 
     //plotScatter(heights,scale);
-/*
-      // Plot the data
-    for (int y = maxScale; y >= 0; y--) {
-        for (int x = 0; x < 100; x++) {
-            if (heights[x] > y) {
-                printf("*");
-            } else {
-                printf(" ");
-            }
-        }
-        printf("\n");
-    }
-*/
-    // Close the file
+
     fclose(file);
 
     return 0;

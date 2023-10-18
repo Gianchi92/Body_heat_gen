@@ -3,23 +3,19 @@
 #include <time.h>
 #include <string.h>
 
-// Function to generate a random floating-point number between a and b
 float randomFloat(float a, float b) {
     return a + ((float) rand() / RAND_MAX) * (b - a);
 }
 
 int main() {
-    int N=20;
+    int N=80;
     int temp_min=36;
-    int temp_max=36;
-    printf("Temperature data simulation. Insert subject name to simulated temperature evolution.\n");
+    int temp_max=38;
+    printf("Simulación de temperatura corporal. Genera un archivo con la evolución de temperatura para un sujeto de nombre dado.\n");
 
-    // Seed the random number generator
     srand(time(0));
-
-    // Get the subject name from the user
     char subject[100];
-    printf("Enter the subject name: ");
+    printf("Nombre del sujeto: ");
     scanf("%s", subject);
 
     // Get the current time and format it
