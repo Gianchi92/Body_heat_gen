@@ -3,12 +3,19 @@
 
 int main() {
     int N_max=100;
-    float temp_min=35.9;
-    float temp_max=38.2;
+    float temp_min=0;
+    float temp_max=40;
+    float scale = 3;  // Factor de escala
+
+    char buffer[100];
+    int index;
+    float temp;
+    int maxScale = (float)((temp_max-temp_min) * scale );
+    int heights[100] = {0};
 
     printf("Nombre del sujeto: ");
-    char subject[100];scanf("%s", subject);
-    //printf("Gianni\n");char subject[100] = "Gianni"; //Hardcoded !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //char subject[100];scanf("%s", subject);
+    printf("Gianni\n");char subject[100] = "Gianni"; //Hardcodeo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
     char filename[150];
@@ -19,13 +26,7 @@ int main() {
         printf("Could not open the file for reading.\n");
         return 1;
     }
-
-    char buffer[100];
-    int index;
-    float temp;
-    float scale = 20;  // Factor de escala
-    int maxScale = (float)((temp_max-temp_min) * scale );
-    int heights[100] = {0};
+    printf("%.d", sizeof(filename));
 
     fgets(buffer, sizeof(buffer), file);    // Skippeo header
     while (fscanf(file, "%d,%f\n", &index, &temp) != EOF) {
@@ -41,7 +42,7 @@ int main() {
         }
 
         for (int x = 0; x < 100; x++) {
-            if (heights[x] > y) {
+            if (heights[x] == y) {
                 printf("*");
             } else {
                 printf(" ");
