@@ -8,7 +8,7 @@ float randomFloat(float a, float b) {
 }
 
 int main() {
-    int N=80;
+    int N=100;
     int temp_min=36;
     int temp_max=38;
     printf("Simulación de temperatura corporal. Genera un archivo con la evolución de temperatura para un sujeto de nombre dado.\n");

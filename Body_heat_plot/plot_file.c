@@ -3,7 +3,7 @@
 
 int main() {
     int N_max=100;
-    float temp_min=0;
+    float temp_min=30;
     float temp_max=40;
     float scale = 3;  // Factor de escala
 
@@ -14,8 +14,8 @@ int main() {
     int heights[100] = {0};
 
     printf("Nombre del sujeto: ");
-    //char subject[100];scanf("%s", subject);
-    printf("Gianni\n");char subject[100] = "Gianni"; //Hardcodeo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    char subject[100];scanf("%s", subject);
+    //printf("Gianni\n");char subject[100] = "Gianni"; //Hardcodeo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
     char filename[150];
@@ -26,7 +26,7 @@ int main() {
         printf("Could not open the file for reading.\n");
         return 1;
     }
-    printf("%.d", sizeof(filename));
+    //printf("%.d\n", sizeof(filename));
 
     fgets(buffer, sizeof(buffer), file);    // Skippeo header
     while (fscanf(file, "%d,%f\n", &index, &temp) != EOF) {
