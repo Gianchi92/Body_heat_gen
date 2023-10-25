@@ -18,28 +18,27 @@ int main() {
     printf("Nombre del sujeto: ");
     scanf("%s", subject);
 
-    // Get the current time and format it
+    // Tiempo y formato
     time_t t = time(NULL);
     struct tm *tm_info = localtime(&t);
     char timestamp[20];
     strftime(timestamp, 20, "%Y%m%d%H%M%S", tm_info);
 
-    // Generate the filename
+    // Flename
     char filename[150];
     //snprintf(filename, sizeof(filename), "%s_%s.csv", subject, timestamp);
     snprintf(filename, sizeof(filename), "%s.csv", subject);
 
-    // Open the file for writing
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
-        printf("Could not open the file for writing.\n");
+        printf("No se pudo abrir para escribir.\n");
         return 1;
     }
 
-    // Write header
+    // Header
     fprintf(file, "Index,Temperature\n");
 
-    // Generate and write 100 simulated body temperatures
+    // Generar temp
     int i;
     for (i = 0; i < N; ++i) {
         float temp = randomFloat(temp_min,temp_max);
@@ -49,6 +48,6 @@ int main() {
     // Close the file
     fclose(file);
 
-    printf("Simulated temperature data has been written to '%s'.\n", filename);
+    printf("Se genero el archivo '%s'.\n", filename);
     return 0;
 }

@@ -15,7 +15,7 @@ int main() {
 
     printf("Nombre del sujeto: ");
     char subject[100];scanf("%s", subject);
-    //printf("Gianni\n");char subject[100] = "Gianni"; //Hardcodeo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //printf("Gianni\n");char subject[100] = "Gianni"; //Hardcodeo ------------------------------------
 
 
     char filename[150];
@@ -29,6 +29,7 @@ int main() {
     //printf("%.d\n", sizeof(filename));
 
     fgets(buffer, sizeof(buffer), file);    // Skippeo header
+    //fseek()
     while (fscanf(file, "%d,%f\n", &index, &temp) != EOF) {
         heights[index - 1] = (int)((temp - temp_min) * scale);
     }
@@ -51,15 +52,11 @@ int main() {
         printf("\n");
     }
 
-    // Add the horizontal axis
     printf("      ");
     for (int x = 0; x < 100; x++) {
         printf("-");
     }
     printf("\n");
-
-
-    //plotScatter(heights,scale);
 
     fclose(file);
 
