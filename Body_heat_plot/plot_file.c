@@ -18,8 +18,8 @@ int main() {
     int heights[100] = {0};
 
     printf("Nombre del sujeto: ");
-    //char subject[100];scanf("%s", subject);
-    printf("Gianni\n");char subject[100] = "Gianni"; //Hardcodeo ------------------------------------
+    char subject[100];scanf("%s", subject);
+    //printf("Gianni\n");char subject[100] = "Gianni"; //Hardcodeo ------------------------------------
 
 
     char filename[150];
@@ -63,7 +63,7 @@ int main() {
 
     fclose(file);
 
-    char *gnuplotCommands[2048];  // Asegúrate de que este buffer sea lo suficientemente grande para todos tus comandos
+    char *gnuplotCommands[2048];
     sprintf(gnuplotCommands,
             "set datafile separator ','; "
             "set yrange [0:45]; "
@@ -71,47 +71,13 @@ int main() {
             "set ylabel 'Temperatura [C]'; "
             "set title 'Evolucion de la temperatura paciente %s'; "
             "unset key;"
-            "plot 'G:\\My Drive\\LabNIng\\Doctorado\\Programacion_C\\CData\\Body_heat_plot\\Gianni.csv' using 1:2 with points",
-            subject);
+            "plot 'G:\\My Drive\\LabNIng\\Doctorado\\Programacion_C\\CData\\Body_heat_plot\\%s.csv' using 1:2 with points",
+            subject,subject);
 
 
     char command[2048];
-    //sprintf(command, "gnuplot -persist | echo %s", gnuplotCommands);
-    //sprintf(command, "gnuplot -persist -e \"%s\"  2> error.log", gnuplotCommands);
     sprintf(command, "gnuplot -persist -e \"%s\" > output.log 2>&1", gnuplotCommands); //OK
     system(command);
-
-
-
-
-
-
-/* 1
-    char *gnuplotCommands = "set datafile separator ',';"
-    "set yrange [0:45];"
-    "plot 'G:\\My Drive\\LabNIng\\Doctorado\\Programacion_C\\CData\\Body_heat_plot\\Gianni.csv' using 1:2 with points";
-    char command[1024];
-    sprintf(command, "echo %s | gnuplot -persist", gnuplotCommands);
-    system(command);
-*/
-/* 2
-    // Ahora, utilizamos Gnuplot para trazar el gráfico
-    FILE *gnuplotPipe = popen("gnuplot -persist", "w");
-    if (gnuplotPipe == NULL)
-    {
-    fprintf(stderr, "Error al abrir la tubería a Gnuplot.\n");
-    return; // Salir de la función si hay un error
-    }
-    // Comandos de Gnuplot para trazar la función desde datos proporcionados
-    fprintf(gnuplotPipe, "set title 'Evolución de la temperatura paciente %s'\n",subject);
-    fprintf(gnuplotPipe, "set xlabel 'X'\n");
-    fprintf(gnuplotPipe, "set ylabel 'Y'\n");
-    fprintf(gnuplotPipe, "set key outside\n");
-    fprintf(gnuplotPipe, "set autoscale x\n");
-    fprintf(gnuplotPipe, "plot 'G:\\My Drive\\LabNIng\\Doctorado\\Programacion_C\\CData\\Body_heat_plot\\Gianni.csv' using 1:2 with points");
-    // Cerrar la tubería
-    pclose(gnuplotPipe);
-*/
 
     return 0;
 }
